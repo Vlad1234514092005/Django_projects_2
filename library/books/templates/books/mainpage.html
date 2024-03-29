@@ -1,0 +1,8 @@
+{% extends 'books/base.html' %}
+
+{% block content %}
+{% for book in library %}
+<a href="{% url 'show_post_by_id' pk=book.pk %}">{{ book.title }}</a>
+    <br>
+{% endfor %}
+{% endblock %}
