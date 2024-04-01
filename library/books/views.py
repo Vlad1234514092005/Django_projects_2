@@ -1,5 +1,7 @@
 from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+
+from .form import BookAddForm
 from .models import Book
 
 
@@ -11,3 +13,22 @@ def show_main_page(request):
 def show_post_by_id(request, pk):
     book = get_object_or_404(Book, pk=pk)
     return render(request, 'books/show_book_info.html', {'book': book})
+
+
+def add_book(request):
+    if request.method == "POST":
+        form = BookAddForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('show_main_page')
+    else:
+        form = BookAddForm
+    return render(request, 'books/add_book.html', {'form': form})
+
+
+def update_book(request):
+    return HttpResponse("<h1>Updating article</h1>")
+
+
+def delete_book(request):
+    return HttpResponse("<h1>Deleting article</h1>")
