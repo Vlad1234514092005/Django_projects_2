@@ -2,6 +2,8 @@
 
 {% block content %}
 {% for book in library %}
-<ul><a href="{% url 'show_post_by_id' pk=book.pk %}">{{ book.title }}</a></ul>
+<div class="book">
+    <h2><a href="{% url 'show_post_by_id' pk=book.pk %}">{{ book.title }}</a></h2>
+</div>
 {% endfor %}
 {% endblock %}

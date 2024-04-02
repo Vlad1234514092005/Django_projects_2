@@ -19,15 +19,24 @@ def add_book(request):
     if request.method == "POST":
         form = BookAddForm(request.POST)
         if form.is_valid():
-            form.save()
+            post = form.save()
             return redirect('show_main_page')
     else:
         form = BookAddForm
     return render(request, 'books/add_book.html', {'form': form})
 
 
-def update_book(request):
-    return HttpResponse("<h1>Updating article</h1>")
+def update_book(request, pk):
+    post = get_object_or_404(Book, pk=pk)
+    if request.method == "POST":
+        form = BookAddForm(request.POST, instance=post)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.save()
+            return redirect('show_main_page')
+    else:
+        form = BookAddForm(instance=post)
+    return render(request, 'books/add_book.html', {'form': form})
 
 
 def delete_book(request):

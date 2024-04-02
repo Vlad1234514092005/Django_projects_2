@@ -1,6 +1,7 @@
-h1 a, h2 a{
+h1 a{
     color: #C25100;
     font-family: 'Lobster';
+    text-align: center;
 }
 
 body{
@@ -21,4 +22,36 @@ body{
     color: #ffffff;
     font-size: 36pt;
     text-decoration: none;
+}
+
+aside{
+    float: left;
+    background-color: black;
+    width: 20%;
+    padding: 3%;
+    height: 100vh;
+    color: white;
+    border-right: 5px solid grey;
+}
+
+aside ul{list-style: none}
+aside ul li{
+    color: #fff;
+    display: block;
+    margin-top: 20px;
+    transition: transform .6s ease;
+}
+
+aside ul li:hover, aside ul a:hover{
+    color: #eb5959;
+    text-decoration: none;
+    transform: scale(1.05);
+}
+
+main .book{
+    float: left;
+    color: white;
+    margin-top: 100px;
+    text-align: center;
+    width: 75%;
 }
